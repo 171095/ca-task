@@ -1,14 +1,13 @@
 <div class="container">
   <div class="nested-fields">
     <div class="row">
-      <div class="col-md-2">
+      <div class="control-label col-md-2">
         <%= f.label :title %>
       </div>
       <div class="col-md-7">
-        <%= f.text_field :title %>
-      </div>
-      <div class="col-md-3">
-        <h5><%= link_to_remove_association "Delete Sub Task", f, class: "btn btn-danger" %></h5>
+        <%= f.text_field :title , class: "form-control" %>
+        <span class="remove_subtask"><%= link_to_remove_association "Delete Sub Task", f, class: "btn btn-danger" %></span>
+        <br>
       </div>
     </div> 
   </div>

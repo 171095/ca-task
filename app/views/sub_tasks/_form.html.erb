@@ -42,7 +42,7 @@
   <div class="form-group">
     <%= f.label :task_id, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
-      <%= f.select :task_id, options_for_select(Task.all.collect {|task| [ task.title, task.id ] },(f.object.try(:task_id))),{prompt: 'Select A Task'}, { :class => 'form-control'} %>
+      <%= f.select :task_id, options_for_select(Task.all.collect {|task| [ task.nature_of_task, task.id ] },(f.object.try(:task_id))),{prompt: 'Select A Task'}, { :class => 'form-control'} %>
     </div>
     <%=f.error_span(:task_id) %>
   </div>
