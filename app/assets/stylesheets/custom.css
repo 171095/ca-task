@@ -1,0 +1,14 @@
+hr{
+  border:none;
+  height:1px;
+  background-color: #ccc;
+}
+.top_spacing{
+  margin-top: 5%;
+}
+.input-date{
+  float: right;
+  margin-top: -34px;
+  padding: 9px;
+  padding-right: 21px;
+}

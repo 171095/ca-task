@@ -1,65 +1,75 @@
 <%= form_for @task, :html => { :class => "form-horizontal task" } do |f| %>
 
-  <% if @task.errors.any? %>
-    <div id="error_expl" class="panel panel-danger">
-      <div class="panel-heading">
-        <h3 class="panel-title"><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h3>
-      </div>
-      <div class="panel-body">
-        <ul>
-        <% @task.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-        </ul>
-      </div>
-    </div>
-  <% end %>
+<% if @task.errors.any? %>
+<div id="error_expl" class="panel panel-danger">
+  <div class="panel-heading">
+    <h3 class="panel-title"><%= pluralize(@task.errors.count, "error") %> prohibited this task from being saved:</h3>
+  </div>
+  <div class="panel-body">
+    <ul>
+      <% @task.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+<% end %>
 
-  <div class="form-group">
-    <%= f.label :nature_of_task, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :nature_of_task, :class => 'form-control' %>
-    </div>
-    <%=f.error_span(:nature_of_task) %>
+<div class="form-group">
+  <%= f.label :nature_of_task, :class => 'control-label col-lg-2' %>
+  <div class="col-lg-10">
+    <%= f.text_field :nature_of_task, :class => 'form-control' %>
   </div>
-  <div class="form-group">
-    <%= f.label :status, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :status, :class => 'form-control' %>
-    </div>
-    <%=f.error_span(:status) %>
+  <%=f.error_span(:nature_of_task) %>
+</div>
+<div class="form-group">
+  <%= f.label :status, :class => 'control-label col-lg-2' %>
+  <div class="col-lg-10">
+    <%= f.text_field :status, :class => 'form-control' %>
   </div>
-  <div class="form-group">
-    <%= f.label :due_date, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :due_date, :class => 'form-control' %>
-    </div>
-    <%=f.error_span(:due_date) %>
+  <%=f.error_span(:status) %>
+</div>
+<div class="form-group">
+  <%= f.label :due_date, :class => 'control-label col-lg-2' %>
+  <div class="col-lg-10" id= "datePicker1" >
+    <%= f.text_field :due_date, :class => 'form-control', id: "due_date" %>
+    <span class="input-group-addon input-date">
+      <span class="fa fa-calendar"></span>
+    </span>
   </div>
-  <div class="form-group">
-    <%= f.label :targeted_date, :class => 'control-label col-lg-2' %>
-    <div class="col-lg-10">
-      <%= f.text_field :targeted_date, :class => 'form-control' %>
-    </div>
-    <%=f.error_span(:targeted_date) %>
+  <%=f.error_span(:due_date) %>
+</div>
+<div class="form-group">
+  <%= f.label :targeted_date, :class => 'control-label col-lg-2' %>
+  <div class="col-lg-10" id= "datePicker2">
+    <%= f.text_field :targeted_date, :class => 'form-control', id: "targeted_date" %>
+    <span class="input-group-addon input-date">
+      <span class="fa fa-calendar"></span>
+    </span>
   </div>
+  <%=f.error_span(:targeted_date) %>
+</div>
 
-  <div class="form-group">
-    <%= f.label :Sub_tasks, class: "control-label col-lg-2" %>
-    <div class="col-lg-10">
-      <%= f.fields_for :sub_tasks do |sub_task| %>
-      <%= render :partial => "sub_task_fields", :locals => { :f => sub_task } %>
-      <% end %><br>
-      <%= link_to_add_association "Add Sub Task", f, :sub_tasks, class: "btn btn-warning " %>
-    </div> 
-  </div>
-
-  <div class="form-group">
-    <div class="col-lg-offset-2 col-lg-10">
-      <%= f.submit nil, :class => 'btn btn-primary' %>
-      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                tasks_path, :class => 'btn btn-default' %>
+<h2>Add Sub Tasks</h2>  
+<hr>
+<div class="top_spacing"></div>
+<div class="form-group">
+  <div class="col-lg-10 ">
+    <%= f.fields_for :sub_tasks do |sub_task| %>
+    <%= render :partial => "sub_task_fields", :locals => { :f => sub_task } %>
+    <% end %><br>
+    <div id="add_sub_tasks">
+      <%= link_to_add_association "Add Sub Task", f, :sub_tasks, class: "btn btn-warning " %>  
     </div>
+  </div> 
+</div>
+<hr>
+<div class="form-group">
+  <div class="col-lg-offset-2 col-lg-10">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+    tasks_path, :class => 'btn btn-default' %>
   </div>
+</div>
 
 <% end %>
