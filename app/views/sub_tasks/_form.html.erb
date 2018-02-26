@@ -1,37 +1,55 @@
-<%= form_with(model: sub_task, local: true) do |form| %>
-  <% if sub_task.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(sub_task.errors.count, "error") %> prohibited this sub_task from being saved:</h2>
+<%= form_for @sub_task, :html => { :class => "form-horizontal sub_task" } do |f| %>
 
-      <ul>
-      <% sub_task.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+  <% if @sub_task.errors.any? %>
+    <div id="error_expl" class="panel panel-danger">
+      <div class="panel-heading">
+        <h3 class="panel-title"><%= pluralize(@sub_task.errors.count, "error") %> prohibited this sub_task from being saved:</h3>
+      </div>
+      <div class="panel-body">
+        <ul>
+        <% @sub_task.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.text_field :status, id: :sub_task_status %>
+  <div class="form-group">
+    <%= f.label :status, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :status, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:status) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :title, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :title, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:title) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :completion_date, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.text_field :completion_date, :class => 'form-control' %>
+    </div>
+    <%=f.error_span(:completion_date) %>
+  </div>
+  <div class="form-group">
+    <%= f.label :task_id, :class => 'control-label col-lg-2' %>
+    <div class="col-lg-10">
+      <%= f.select :task_id, options_for_select(Task.all.collect {|task| [ task.title, task.id ] },(f.object.try(:task_id))),{prompt: 'Select A Task'}, { :class => 'form-control'} %>
+    </div>
+    <%=f.error_span(:task_id) %>
   </div>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title, id: :sub_task_title %>
+  <div class="form-group">
+    <div class="col-lg-offset-2 col-lg-10">
+      <%= f.submit nil, :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                sub_tasks_path, :class => 'btn btn-default' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :completion_date %>
-    <%= form.datetime_select :completion_date, id: :sub_task_completion_date %>
-  </div>
-
-  <div class="field">
-    <%= form.label :task_id %>
-    <%= form.number_field :task_id, id: :sub_task_task_id %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>

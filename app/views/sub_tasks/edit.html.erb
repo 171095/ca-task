@@ -1,6 +1,5 @@
-<h1>Editing Sub Task</h1>
-
-<%= render 'form', sub_task: @sub_task %>
-
-<%= link_to 'Show', @sub_task %> |
-<%= link_to 'Back', sub_tasks_path %>
+<%- model_class = SubTask -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => [:'helpers.titles.edit', 'Edit %{model}'], :model => model_class.model_name.human.titleize %></h1>
+</div>
+<%= render :partial => 'form' %>
