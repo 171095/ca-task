@@ -18,7 +18,7 @@
   <div class="form-group">
     <%= f.label :status, :class => 'control-label col-lg-2' %>
     <div class="col-lg-10">
-      <%= f.text_field :status, :class => 'form-control' %>
+      <%= f.collection_select :status, SubTask::STATUS, :to_s, :upcase, {}, {class: "form-control"} %>
     </div>
     <%=f.error_span(:status) %>
   </div>
