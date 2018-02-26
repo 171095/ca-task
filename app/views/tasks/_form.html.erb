@@ -45,6 +45,16 @@
   </div>
 
   <div class="form-group">
+    <%= f.label :Sub_tasks, class: "control-label col-lg-2" %>
+    <div class="col-lg-10">
+      <%= f.fields_for :sub_tasks do |sub_task| %>
+      <%= render :partial => "sub_task_fields", :locals => { :f => sub_task } %>
+      <% end %><br>
+      <%= link_to_add_association "Add Sub Task", f, :sub_tasks, class: "btn btn-warning " %>
+    </div> 
+  </div>
+
+  <div class="form-group">
     <div class="col-lg-offset-2 col-lg-10">
       <%= f.submit nil, :class => 'btn btn-primary' %>
       <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
