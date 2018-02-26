@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nature_of_task: MyString
+  status: MyString
+  due_date: 2018-02-26 10:50:16
+  targeted_date: 2018-02-26 10:50:16
+
+two:
+  nature_of_task: MyString
+  status: MyString
+  due_date: 2018-02-26 10:50:16
+  targeted_date: 2018-02-26 10:50:16
