@@ -25,9 +25,9 @@
         <td><%=l sub_task.created_at %></td>
         <td>
           <%= link_to t('.show', :default => t("helpers.links.show")),
-                      sub_task_path(sub_task), :class => 'btn btn-default btn-xs' %>
+                      sub_task_path(sub_task), :class => 'btn btn-info btn-xs' %>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_sub_task_path(sub_task), :class => 'btn btn-default btn-xs' %>
+                      edit_sub_task_path(sub_task), :class => 'btn btn-warning btn-xs' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       sub_task_path(sub_task),
                       :method => :delete,

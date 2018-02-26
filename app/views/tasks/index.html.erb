@@ -7,9 +7,9 @@
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:nature_of_task) %></th>
-      <th><%= model_class.human_attribute_name(:status) %></th>
       <th><%= model_class.human_attribute_name(:due_date) %></th>
       <th><%= model_class.human_attribute_name(:targeted_date) %></th>
+      <th><%= model_class.human_attribute_name(:status) %></th>
       <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
@@ -18,14 +18,21 @@
       <tr>
         <td><%= link_to task.id, task_path(task) %></td>
         <td><%= task.nature_of_task %></td>
-        <td><%= task.status %></td>
         <td><%= task.due_date.try(:strftime,("%m/%d/%Y")) %></td>
         <td><%= task.targeted_date.try(:strftime,("%m/%d/%Y")) %></td>
         <td>
+          <%= task.status %>
+          <%# task.sub_tasks.each do |st|%>
+            <%# unless st.status == 'DONE' %>
+            <%# else st.status == 'PENDING' %>
+            <%# end %>
+          <%# end %>
+        </td>
+        <td>
           <%= link_to t('.show', :default => t("helpers.links.show")),
-                      task_path(task), :class => 'btn btn-default btn-xs' %>
+                      task_path(task), :class => 'btn btn-info btn-xs' %>
           <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                      edit_task_path(task), :class => 'btn btn-default btn-xs' %>
+                      edit_task_path(task), :class => 'btn btn-warning btn-xs' %>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
                       task_path(task),
                       :method => :delete,

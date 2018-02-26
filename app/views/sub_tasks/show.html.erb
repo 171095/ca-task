@@ -15,9 +15,9 @@
 </dl>
 
 <%= link_to t('.back', :default => t("helpers.links.back")),
-              sub_tasks_path, :class => 'btn btn-default'  %>
+              sub_tasks_path, :class => 'btn btn-info'  %>
 <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_sub_task_path(@sub_task), :class => 'btn btn-default' %>
+              edit_sub_task_path(@sub_task), :class => 'btn btn-warning' %>
 <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
               sub_task_path(@sub_task),
               :method => 'delete',
