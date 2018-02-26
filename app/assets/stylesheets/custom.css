@@ -6,9 +6,18 @@ hr{
 .top_spacing{
   margin-top: 5%;
 }
+.client_pic img{
+  width: 100px;
+  height: 100px;
+}
 .input-date{
   float: right;
   margin-top: -34px;
   padding: 9px;
   padding-right: 21px;
+}
+.remove_subtask{
+  float: right;
+  margin-top: -34px;
+  margin-right: -150px;
 }
