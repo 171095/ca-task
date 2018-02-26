@@ -16,4 +16,6 @@
 //= require cocoon
 //= require custom
 //= require bootstrap-datepicker.min
+//= require ckeditor/init
+
 

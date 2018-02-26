@@ -56,3 +56,4 @@ end
   gem "twitter-bootstrap-rails"
   gem "cocoon"
   gem 'carrierwave'
+  gem 'ckeditor'
