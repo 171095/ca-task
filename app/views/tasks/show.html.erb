@@ -14,6 +14,19 @@
   <dd><%= @task.targeted_date.try(:strftime,("%m/%d/%Y")) %></dd>
 </dl>
 
+<div class="page-header">
+  <h1>Sub-task</h1>
+</div>
+<dl class="dl-horizontal">
+  <% @task.sub_tasks.each do |st| %>
+  <dt><strong>Title:</strong></dt>
+  <dd><%= st.title %></dd>
+  <dt><strong>Status:</strong></dt>
+  <dd><%= st.status %></dd>
+  <br>
+  <% end %>
+</dl>
+
 <%= link_to t('.back', :default => t("helpers.links.back")),
 tasks_path, :class => 'btn btn-info'  %>
 <%= link_to t('.edit', :default => t("helpers.links.edit")),
