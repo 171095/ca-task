@@ -51,9 +51,19 @@ class Staffs::RegistrationsController < Devise::RegistrationsController
   end
 
   # The path used after sign up.
-  # def after_sign_up_path_for(resource)
-  #   super(resource)
-  # end
+  #def after_sign_up_path_for(resource)
+    # if resource.has_role? :article
+    #   dashboard_article_dashboard_path
+    # elsif resource.has_role? :audit
+    #   dashboard_audit_dashboard_path
+    # elsif resource.has_role? :ca
+    #   dashboard_ca_dashboard_path
+    # elsif resource.has_role? :manager
+    #   dashboard_manager_dashboard_path
+    # else
+    #   root_path
+    # end               
+  #end
 
   # The path used after sign up for inactive accounts.
   # def after_inactive_sign_up_path_for(resource)
