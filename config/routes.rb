@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  devise_for :staffs, controllers: {
+    sessions: 'staffs/sessions',
+    registrations: 'staffs/registrations'
+  }
   resources :sub_tasks
   resources :tasks
   resources :client_types
